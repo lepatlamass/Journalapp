@@ -17,8 +17,11 @@
 package com.example.android.testing.notes.notes;
 
 import com.example.android.testing.notes.R;
+import com.example.android.testing.notes.signin.SigninActivity;
 import com.example.android.testing.notes.statistics.StatisticsActivity;
 import com.example.android.testing.notes.util.EspressoIdlingResource;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,12 +39,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 public class NotesActivity extends AppCompatActivity {
-
+    FirebaseUser user;
     private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+            //login
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user==null) {
+            startActivity(new Intent(this, SigninActivity.class));
+            finish();
+        }
         setContentView(R.layout.activity_notes);
 
 
