@@ -71,6 +71,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:15.0.1'
 
     // Dependencies for local unit tests
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
     testImplementation "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
     testImplementation "org.hamcrest:hamcrest-all:$rootProject.ext.hamcrestVersion"

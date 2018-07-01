@@ -17,8 +17,12 @@
 package com.example.android.testing.notes.addnote;
 
 import com.example.android.testing.notes.R;
+import com.example.android.testing.notes.signin.SigninActivity;
 import com.example.android.testing.notes.util.EspressoIdlingResource;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.VisibleForTesting;
 import android.support.test.espresso.IdlingResource;
@@ -28,15 +32,26 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 /**
  * Displays an add note screen.
  */
 public class AddNoteActivity extends AppCompatActivity {
 
+    FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        //login
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user==null) {
+            startActivity(new Intent(this, SigninActivity.class));
+            finish();
+        }
         setContentView(R.layout.activity_addnote);
 
         // Set up the toolbar.
