@@ -18,7 +18,10 @@ These instructions will get you a copy of the project up and running on your loc
  Install all the dependencies if you encounter any errors.
 
 ### Running Testes 
-    - 
+    we have the following testes working using `Expresso` and `jUnit4`
+    - AddNotes
+    - Present Notes
+    -
 
 
 
